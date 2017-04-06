@@ -1,0 +1,22 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>WebAssembly</title>
+</head>
+<body>
+  <input type="button" id="countup" value="CountUp?" />
+  
+  <script>
+  fetch('loop.wasm')
+  .then(response => response.arrayBuffer())
+  .then(buffer => WebAssembly.compile(buffer))
+  .then(module => {
+    const instance = new WebAssembly.Instance(module);
+    console.time('timer1');
+    instance.exports.loop();
+    console.timeEnd('timer1');
+  });
+  </script>
+</body>
+</html>
