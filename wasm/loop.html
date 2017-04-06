@@ -5,8 +5,6 @@
   <title>WebAssembly</title>
 </head>
 <body>
-  <input type="button" id="countup" value="CountUp?" />
-  
   <script>
   fetch('loop.wasm')
   .then(response => response.arrayBuffer())
@@ -17,6 +15,17 @@
     instance.exports.loop();
     console.timeEnd('timer1');
   });
+  
+  
+  console.time('timer2');
+  looo();
+  console.timeEnd('timer2');
+
+  function loop() {
+    for (var i = 0; i < 10000000; i++) {
+      const x = 0.000001 * 0.000001;
+    }  
+  }
   </script>
 </body>
 </html>
